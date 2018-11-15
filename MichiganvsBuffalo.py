@@ -1,15 +1,53 @@
 from bs4 import BeautifulSoup
 import urllib.request
-import io
 
-# from Tools.scripts.parse_html5_entities import fname
+
+#Prints out the list in and converts to text
+def print_listInOrder(x, starting_pos):
+    for i in range(starting_pos, len(x)):
+        print(x[i].get_text())
+#Function for grabbing the teams score
+def grabTeamScore(Team, array):
+    scoresarr= []
+    if Team == 'b':
+        for i in range(82, len(array)):
+            Number = array[i].get_text()
+            con_word = str(Number)
+            if (con_word[0].isdigit() is True and con_word[0:2].isdigit() is True):
+                char = con_word[0:2]
+            else:
+                char = con_word[0]
+            if char.isdigit() is True:
+                scoresarr.append(char)
+    elif Team == 'm':
+        for x in range(82, len(array)):
+            Number = array[x].get_text()
+            con_word = str(Number)
+            if con_word[1].isdigit() is True:
+                 char = con_word[3:6]
+            elif con_word[1].isdigit() is False and con_word[0].isdigit() is True:
+                char = con_word[2:3]
+            scoresarr.append(char)
+    return scoresarr
+
+
 source = urllib.request.urlopen('http://ubbulls.com/sports/wvball/2017-18/files/ubvb28.htm').read()
-x = 12
 soup = BeautifulSoup(source, 'lxml')
-ele = soup('font', face="verdana")
-#DRAFT STARTS AT 59
-for i in range(59,len(soup.find_all('tr'))):
-    print(soup.find_all('tr')[i].get_text())
+
+#Basically what this does is it grabs all b tags nested inside td and checks if there is <b>, if it has an element inside
+scores =[b for b in (td.find('b') for td in soup.findAll('td')) if b] #Grabs all the B tags which contains the scores
+
+allDetail = [tr for tr in soup.findAll('tr') ] #Grabs all the <tr> Tags
+
+word = str(scores[120].get_text())
+
+print (scores[90] == u'')
+print (word)
+print (word[2])
+print (*grabTeamScore('m',scores), sep= ',') #Prints out the team scores depending on whether 'b' for buffalo's team or 'm' for michigan's team
+#print_listInOrder(scores,82) #Prints out all the scores
+#print_listInOrder(allDetail, 59) #Prints out all the details
+
 
 
 """
