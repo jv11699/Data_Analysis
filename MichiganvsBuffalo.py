@@ -23,12 +23,22 @@ def grabTeamScore(Team, array):
         for x in range(82, len(array)):
             Number = array[x].get_text()
             con_word = str(Number)
-            if con_word[1].isdigit() is True:
-                 char = con_word[3:6]
-            elif con_word[1].isdigit() is False and con_word[0].isdigit() is True:
-                char = con_word[2:3]
-            scoresarr.append(char)
+            for character in range(0,len(con_word)):
+                if con_word[character] == '-':
+                    char = con_word[1+ character:]
+            if con_word[0].isdigit() is True:
+                scoresarr.append(char)
     return scoresarr
+#This function I hope will let us figure the emotional factor that comes in to play with UB's volleyball team
+def delta_scores():
+    global scores
+    delta = []
+    ub_scores = grabTeamScore('b', scores)
+    michigan_scores = grabTeamScore('m',scores)
+    for x in range(0, len(ub_scores)):
+        delta.append( int(ub_scores[x]) - int(michigan_scores[x]))
+    return delta
+
 
 
 source = urllib.request.urlopen('http://ubbulls.com/sports/wvball/2017-18/files/ubvb28.htm').read()
@@ -42,9 +52,13 @@ allDetail = [tr for tr in soup.findAll('tr') ] #Grabs all the <tr> Tags
 word = str(scores[120].get_text())
 
 print (scores[90] == u'')
-print (word)
+print (word[2] == '-')
 print (word[2])
-print (*grabTeamScore('m',scores), sep= ',') #Prints out the team scores depending on whether 'b' for buffalo's team or 'm' for michigan's team
+
+#print (*grabTeamScore('m',scores), sep= ' ') #Prints out the team scores depending on whether 'b' for buffalo's team or 'm' for michigan's team
+
+print("this is the delta between UB and michigan")
+print(*delta_scores(), sep= ',')
 #print_listInOrder(scores,82) #Prints out all the scores
 #print_listInOrder(allDetail, 59) #Prints out all the details
 
