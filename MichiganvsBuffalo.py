@@ -49,12 +49,13 @@ soup = BeautifulSoup(source, 'lxml') #Conversion to a beautiful soup object
 scores =[b for b in (td.find('b') for td in soup.findAll('td')) if b] #Grabs all the B tags which contains the scores
 allDetail = [tr for tr in soup.findAll('tr') ] #Grabs all the <tr> Tags
 
+#USER INPUT MODE
 user = input("MODE:")
 while user != "quit":
     if user == 'ub':
-        print(grabTeamScore('b', scores), sep=' ')  # Prints out the team scores depending on whether 'b' for buffalo's team or 'm' for michigan's team
+        print(grabTeamScore(Team = 'b', array= scores), sep=' ')  # Prints out the team scores depending on whether 'b' for buffalo's team or 'm' for michigan's team
     elif user == 'opp':
-        print(grabTeamScore('m', scores), sep=' ')  # Prints out the team scores depending on whether 'b' for buffalo's team or 'm' for michigan's team
+        print(grabTeamScore(Team = 'm', array= scores), sep=' ')  # Prints out the team scores depending on whether 'b' for buffalo's team or 'm' for michigan's team
     elif user == 'allscore':
        print(grabTeamScoreRE(scores))
     user = input("MODE:")
