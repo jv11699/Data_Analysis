@@ -71,9 +71,3 @@ print("this is the delta between UB and michigan")
 #print_listInOrder(allDetail, 59) #Prints out all the details
 
 
-
-
-
-
-
-
