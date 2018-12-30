@@ -22,8 +22,8 @@ def grabScore(array):
     @param mode the mode can either be 'score' or 'name' where score will return the scores of that match and name will return the name of that match  
 '''
 def match(match_number, mode = 'score'):
-    string_names = ''
     global StringLink
+    string_name = []
     source_scores = urllib.request.urlopen(StringLink[match_number]).read()  # the url request
     main_source = urllib.request.urlopen('http://ubbulls.com/sports/wvball/2017-18/files/teamstat.htm').read()
     soup = BeautifulSoup(source_scores, 'lxml')  # Conversion to a beautiful soup object
@@ -33,7 +33,10 @@ def match(match_number, mode = 'score'):
     if mode == 'score':
         return grabScore(scores)
     elif mode == 'name':
-        return string_names[match_number].get_text()
+        for i in range(6,len(match_name),3):
+            string_name.append(match_name[i].get_text())
+        return string_name[match_number]
+
 
 
 '''
@@ -55,7 +58,7 @@ def grabTeamScore(Team, match_number):
 #**********************************************************************************************************************************
 
 
-source = urllib.request.urlopen('http://ubbulls.com/sports/wvball/2017-18/files/teamstat.htm').read() #the url request that gets all the url 
+source = urllib.request.urlopen('http://ubbulls.com/sports/wvball/2017-18/files/teamstat.htm').read() #the url request that gets all the url
 soup = BeautifulSoup(source, 'lxml') #Conversion to a beautiful soup object
 
 links =[a for a in (td.find('a' , href = True) for td in soup.findAll('td')) if a] #Grabs all the a tags which contains the links
