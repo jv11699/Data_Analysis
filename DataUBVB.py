@@ -87,5 +87,5 @@ class Data():
                 score_arr.append(score)
         return score_arr
 
-score = Data(2018)
-print(score.match(3,'name'))
+UBVolleyball = Data(2018)
+print( UBVolleyball.match(match_number = 3, mode = 'name'))
