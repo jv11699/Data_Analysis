@@ -6,15 +6,17 @@ import urllib.request
 *A function when called upon grabs string that have "[digits] - [digits]" pattern 
     using regular expression 
 '''
-def grabScore(array):
+def grabScore(array,match_number):
     texts = '' #the texts that gets accumulated
+    team_score = grabTeamScore('ub', match_number)
+    
     for i in array:
         texts = texts + i.get_text() + "\n"
     scores =  re.findall(r'\d{1,2}-\d{1,2}', texts) #using regular expressions
-    new_String_scores = ''
-    for score in scores: #since regular expression returns a list of all found patterns
-        new_String_scores = new_String_scores + score + "\n"
-    return new_String_scores #returns a string conversion of all the scores
+    score_arr = []
+    for scoreiter in range(0.len(scores)): #since regular expression returns a list of all found patterns
+        score_arr.append()
+    return score_arr #returns a string conversion of all the scores
 
 '''
 * A function when called upon will give the matches score or name 
@@ -31,7 +33,7 @@ def match(match_number, mode = 'score'):
     scores = [b for b in (td.find('b') for td in soup.findAll('td')) if  b]  # Grabs all the B tags which contains the scores
     match_name = [td for td in (soup2.find_all('td', {'align': 'left'}))]
     if mode == 'score':
-        return grabScore(scores)
+        return grabScore(scores,match_number)
     elif mode == 'name':
         for i in range(6,len(match_name),3):
             string_name.append(match_name[i].get_text())
@@ -46,14 +48,16 @@ def match(match_number, mode = 'score'):
 '''
 def grabTeamScore(Team, match_number):
     scoresarr= match(match_number)
+    score_arr = []
     if Team == 'ub': #if the parameter is B then is will return Buffalo scores
         UBscores = re.findall(r'\d{1,2}(?=-)', scoresarr)
         for score in UBscores:
-            print (score)
+            score_arr.append(score)
     elif Team == 'opponent': #if the parameter is M then it will return Michigan scores
         OPPscores = re.findall(r'(?<=-)\d{1,2}', scoresarr)
         for score in OPPscores:
-            print(score)
+            score_arr.append(score)
+    return score_arr
 
 #**********************************************************************************************************************************
 
