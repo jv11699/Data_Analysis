@@ -9,12 +9,12 @@ import urllib.request
 def grabScore(array,match_number):
     texts = '' #the texts that gets accumulated
     team_score = grabTeamScore('ub', match_number)
-    
+
     for i in array:
         texts = texts + i.get_text() + "\n"
     scores =  re.findall(r'\d{1,2}-\d{1,2}', texts) #using regular expressions
     score_arr = []
-    for scoreiter in range(0.len(scores)): #since regular expression returns a list of all found patterns
+    for scoreiter in scores: #since regular expression returns a list of all found patterns
         score_arr.append()
     return score_arr #returns a string conversion of all the scores
 

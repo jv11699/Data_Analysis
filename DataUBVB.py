@@ -1,10 +1,13 @@
 from bs4 import BeautifulSoup
 import re
 import urllib.request
-
+#import pandas 
 class Data():
     '''
      A class that grabs the data of the volleyball of the university at buffalo team  base on the year
+     --This link will help in determining the probability very useful: https://prezi.com/tgxlmlfypzwx/math-in-volleyball/
+     Probability idea: if errors are not occuring and ub is not on the lead then maybe their probability of scoring next is high
+     **** Use this as a library to grab data easily ***
         ...
         Attributes
         - - - - - -
@@ -41,10 +44,8 @@ class Data():
         :param array: an array of the beautiful soup which should contain all of the scores
         :return: returns an array of the scores if the mode is set on score, and an array of
         '''
-        texts = ''  # the texts that gets accumulated
-        for i in array:
-            texts = texts + i.get_text() + "\n"
-        scores = re.findall(r'\d{1,2}-\d{1,2}', texts)  # using regular expressions
+
+        scores = re.findall(r'\d{1,2}-\d{1,2}', self.convBStoString(array))  # using regular expressions
         score_arr = []
         for score in scores:  # since regular expression returns a list of all found patterns
             score_arr.append(score)
@@ -63,14 +64,20 @@ class Data():
         source_scores = urllib.request.urlopen(self.stringLink[match_number]).read()  # the url request
         soup_match = BeautifulSoup(source_scores, 'lxml')  # Conversion to a beautiful soup object
         scores = [b for b in (td.find('b') for td in soup_match.findAll('td')) if b]  # Grabs all the B tags which contains the scores
-        match_name = [td for td in (self.soup.find_all('td', {'align': 'left'}))]
+        match_name = [td for td in (self.soup.find_all('td', {'align':'left'}))]
+        details = [table for table in soup_match.find_all('table', {'border':0})]
+#NEED WORK ON THIS PART
+        detailScore = re.findall(r'(?<=Points)', self.convBStoString(details))
+        #should return the scores of that match
         if mode == 'score':
-            return self.grabScore(scores)
+            return  details[7].get_text() #self.grabScore(scores)
+        #should return the name of that match
         elif mode == 'name':
             for i in range(6, len(match_name), 3):
                 if counter == match_number:
                   return match_name[i].get_text()
                 counter = counter + 1
+        #Score with details
         else:
             raise Exception("modes are only \'score\'\\'name\'")
 
@@ -87,5 +94,11 @@ class Data():
                 score_arr.append(score)
         return score_arr
 
+
+    def convBStoString(self,bs_objectArr):
+        texts = ''  # the texts that gets accumulated
+        for i in bs_objectArr:
+            texts = texts + i.get_text() + "\n"
+        return texts
 UBVolleyball = Data(2018)
-print( UBVolleyball.match(match_number = 3, mode = 'name'))
+print( UBVolleyball.match(match_number = 3, mode = 'score'))
