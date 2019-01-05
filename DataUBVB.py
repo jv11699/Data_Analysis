@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import re
 import urllib.request
-#import pandas 
+import pandas as pd
 class Data():
     '''
      A class that grabs the data of the volleyball of the university at buffalo team  base on the year
@@ -65,12 +65,22 @@ class Data():
         soup_match = BeautifulSoup(source_scores, 'lxml')  # Conversion to a beautiful soup object
         scores = [b for b in (td.find('b') for td in soup_match.findAll('td')) if b]  # Grabs all the B tags which contains the scores
         match_name = [td for td in (self.soup.find_all('td', {'align':'left'}))]
+
         details = [table for table in soup_match.find_all('table', {'border':0})]
-#NEED WORK ON THIS PART
+        data_frame = pd.read_html(str(details))
         detailScore = re.findall(r'(?<=Points)', self.convBStoString(details))
+        '''
+        modes to select DATA FRAM STILL NEEDS WORK! 
+        '''
         #should return the scores of that match
         if mode == 'score':
-            return  details[7].get_text() #self.grabScore(scores)
+            return  self.grabScore(scores)
+        elif mode == 'detail':
+            for index, row in data_frame[7][1].iterrows():
+                print(row)
+        #should return a data frame of the whole game
+        elif mode == 'data frame':
+           return data_frame[7]
         #should return the name of that match
         elif mode == 'name':
             for i in range(6, len(match_name), 3):
@@ -101,4 +111,4 @@ class Data():
             texts = texts + i.get_text() + "\n"
         return texts
 UBVolleyball = Data(2018)
-print( UBVolleyball.match(match_number = 3, mode = 'score'))
+print( UBVolleyball.match(match_number = 3, mode = 'detail'))
