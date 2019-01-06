@@ -61,26 +61,29 @@ class Data():
         if match_number > len(self.stringLink):
             raise Exception("The match number excedes the number of matches")
         counter = 0
-        source_scores = urllib.request.urlopen(self.stringLink[match_number]).read()  # the url request
+        source_scores = urllib.request.urlopen(self.stringLink[match_number]).read()  # the url request that is determined through the match number
         soup_match = BeautifulSoup(source_scores, 'lxml')  # Conversion to a beautiful soup object
         scores = [b for b in (td.find('b') for td in soup_match.findAll('td')) if b]  # Grabs all the B tags which contains the scores
-        match_name = [td for td in (self.soup.find_all('td', {'align':'left'}))]
+        match_name = [td for td in (self.soup.find_all('td', {'align':'left'}))] #list of all the match names of that year
+        table_html = [table for table in soup_match.find_all('table', {'border':0})] #the table html
+        data_frame = pd.read_html(str(table_html)) #this is a panda object that is in a data frame
+        #detailScore = re.findall(r'(?<=Points)', self.convBStoString(details))
 
-        details = [table for table in soup_match.find_all('table', {'border':0})]
-        data_frame = pd.read_html(str(details))
-        detailScore = re.findall(r'(?<=Points)', self.convBStoString(details))
-        '''
-        modes to select DATA FRAM STILL NEEDS WORK! 
-        '''
+        #Below are modes that depends on user input
+
         #should return the scores of that match
         if mode == 'score':
             return  self.grabScore(scores)
+        #returns the details from the game
         elif mode == 'detail':
-            for index, row in data_frame[7][1].iterrows():
-                print(row)
-        #should return a data frame of the whole game
+            row_arr= []
+            for i in range(7,len(data_frame)):
+                for index, row in data_frame[i].iterrows():
+                    row_arr.append(row[1])
+            return row_arr
+        #should return a data frame object/Panda Object
         elif mode == 'data frame':
-           return data_frame[7]
+            return data_frame
         #should return the name of that match
         elif mode == 'name':
             for i in range(6, len(match_name), 3):
@@ -89,9 +92,15 @@ class Data():
                 counter = counter + 1
         #Score with details
         else:
-            raise Exception("modes are only \'score\'\\'name\'")
+            raise Exception(r"modes are only 'score' \ 'name' \ 'data frame' \ 'detail'")
 
     def grabTeamScore(self,Team, match_number):
+        '''
+        Grabs the score of UB or the opponent's volleyball team during that match 
+        :param Team: A String parameter that determines if the user wants UB's score or the opponent's score
+        :param match_number: A user input that determines the match time
+        :return: returns an array of scores
+        '''
         scoresarr = self.match(match_number)
         score_arr = []
         if Team == 'ub':  # if the parameter is B then is will return Buffalo scores
@@ -106,9 +115,14 @@ class Data():
 
 
     def convBStoString(self,bs_objectArr):
+        '''
+        Converts Array of Beautiful soup objects into a Stirng
+        :param bs_objectArr: An array of beautiful soup objects
+        :return: It will convert the parameter into a String object
+        '''
         texts = ''  # the texts that gets accumulated
         for i in bs_objectArr:
             texts = texts + i.get_text() + "\n"
         return texts
 UBVolleyball = Data(2018)
-print( UBVolleyball.match(match_number = 3, mode = 'detail'))
+print( *UBVolleyball.match(match_number = 0, mode = 'score'), sep="\n")
