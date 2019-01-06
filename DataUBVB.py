@@ -77,7 +77,11 @@ class Data():
         #returns the details from the game
         elif mode == 'detail':
             row_arr= []
-            for i in range(7,len(data_frame)):
+            if self.year == 2018:
+                start = 7
+            else:
+                start = 8
+            for i in range(start,len(data_frame)):
                 for index, row in data_frame[i].iterrows():
                     row_arr.append(row[1])
             return row_arr
@@ -96,7 +100,7 @@ class Data():
 
     def grabTeamScore(self,Team, match_number):
         '''
-        Grabs the score of UB or the opponent's volleyball team during that match 
+        Grabs the score of UB or the opponent's volleyball team during that match
         :param Team: A String parameter that determines if the user wants UB's score or the opponent's score
         :param match_number: A user input that determines the match time
         :return: returns an array of scores
@@ -125,4 +129,4 @@ class Data():
             texts = texts + i.get_text() + "\n"
         return texts
 UBVolleyball = Data(2018)
-print( *UBVolleyball.match(match_number = 0, mode = 'score'), sep="\n")
+print( *UBVolleyball.match(match_number = 20, mode = 'detail'), sep="\n")
