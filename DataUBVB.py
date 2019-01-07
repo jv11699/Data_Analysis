@@ -95,7 +95,26 @@ class Data():
                 if counter == match_number: #It would loop through every title till the counter matches the parameter match_number
                   return match_name[i].get_text()
                 counter = counter + 1
-        #Score with details
+                
+        # Statistic total of all players during that match
+        elif mode ==  'stat': #Should return the dictionary of statics
+            #Stat_total
+            dict = {'SP': data_frame[1].iloc[13][2],
+                    'K': data_frame[1].iloc[13][3],
+                    'E':data_frame[1].iloc[13][4],
+                    'TA': data_frame[1].iloc[13][5],
+                    'PCT': data_frame[1].iloc[13][6],
+                    'A': data_frame[1].iloc[13][7],
+                    'SA': data_frame[1].iloc[13][8],
+                    'SE':data_frame[1].iloc[13][9],
+                    'RE':data_frame[1].iloc[13][10],
+                    'DIGS':data_frame[1].iloc[13][11],
+                    'BS':data_frame[1].iloc[13][12],
+                    'BA': data_frame[1].iloc[13][13],
+                    'BE': data_frame[1].iloc[13][14],
+                    'BHE':data_frame[1].iloc[13][15]}
+            print (dict['BE'])
+
         else:
             #if user input is irrational
             raise Exception(r"modes are only 'score' \ 'name' \ 'data frame' \ 'detail'")
@@ -131,4 +150,4 @@ class Data():
             texts = texts + i.get_text() + "\n"
         return texts
 UBVolleyball = Data(2018)
-print( *UBVolleyball.match(match_number = 20, mode = 'detail'), sep="\n")
+print( UBVolleyball.match(match_number = 20, mode = 'stat'), sep="\n")
