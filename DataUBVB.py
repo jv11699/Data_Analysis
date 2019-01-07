@@ -95,7 +95,7 @@ class Data():
                 if counter == match_number: #It would loop through every title till the counter matches the parameter match_number
                   return match_name[i].get_text()
                 counter = counter + 1
-                
+
         # Statistic total of all players during that match
         elif mode ==  'stat': #Should return the dictionary of statics
             #Stat_total
@@ -117,7 +117,7 @@ class Data():
 
         else:
             #if user input is irrational
-            raise Exception(r"modes are only 'score' \ 'name' \ 'data frame' \ 'detail'")
+            raise Exception(r"modes are only 'score' \ 'name' \ 'data frame' \ 'detail' \ 'stat' ")
 
     def grabTeamScore(self,Team, match_number):
         '''
