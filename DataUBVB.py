@@ -37,26 +37,16 @@ class Data():
             else:
                 self.stringLink.append('http://ubbulls.com/sports/wvball/2018-19/files/' + link['href'])  # Each link in the 2018 website is appended inside the StringLink array
 
-    def grabScore(self,array):
-        '''
-        This function grabs all of the score from the match
-
-        :param array: an array of the beautiful soup which should contain all of the scores
-        :return: returns an array of the scores if the mode is set on score, and an array of
-        '''
-
-        scores = re.findall(r'\d{1,2}-\d{1,2}', self.convBStoString(array))  # using regular expressions-it finds pattern of [digits - digits]
-        score_arr = []
-        for score in scores:  # since regular expression returns a list of all found patterns
-            score_arr.append(score)
-        return score_arr  # returns a string conversion of all the scores
-
     def match(self,match_number, mode='score'):
         '''
-
+        Scrapes the needed data from the website,
+        Modes : 'score' will return both the score of UB and the opponent
+                'detail' will return the details for every score
+                'data frame' will return a data frame from pandas library
+                'name' will return the title of that match
         :param match_number:  the nth number of match, matches are in chronological order where 0 is the latest and the last number is the oldest match
         :param mode: where the mode score will return the scores, and the mode name will return the name of that match
-        :return: data base off the mode, score: will return scores, name: will return the title of that match
+        :return: data dependent on the mode
         '''
         if match_number > len(self.stringLink):
             #if user input is irrational for the parameter: match_number
@@ -74,7 +64,8 @@ class Data():
 
         #should return the scores of that match
         if mode == 'score':
-            return  self.grabScore(scores)
+            scorePattern = re.findall(r'\d{1,2}-\d{1,2}', self.convBStoString(scores))  # using regular expressions-it finds pattern of [digits - digits]
+            return scorePattern
         #returns the details from the game
         elif mode == 'detail':
             row_arr= []
@@ -99,36 +90,37 @@ class Data():
             #if user input is irrational
             raise Exception(r"modes are only 'score' \ 'name' \ 'data frame' \ 'detail' \ 'stat' ")
 
-    def grabTeamScore(self,team, match_number, mode):
+    def grabTeamScore(self,team, match_number, mode = 'score'):
         '''
         Grabs the score of UB or the opponent's volleyball team during that match
         :param Team: A String parameter that determines if the user wants UB's score or the opponent's score
         :param match_number: A user input that determines the match time
+        :param mode: the modes are:  'score' or 'stat' where score will return the scores of a team and stat will return the total stats of the team
         :return: returns an array of scores
         '''
         scoresarr = self.match(match_number)
-        score_arr = []
         data_frame =  self.match(match_number, 'data frame')
+
+        #the scores are returned
         if mode == 'score':
             if team == 'ub':  # if the parameter is B then is will return Buffalo scores
                 UBscores = re.findall(r'\d{1,2}(?=-)', str(scoresarr)) #matches strings that have a pattern of: [digits -]
-                for score in UBscores:
-                    score_arr.append(score)
+                return UBscores #will return all does matches
             elif team == 'opponent':  # if the parameter is M then it will return Michigan scores
                 OPPscores = re.findall(r'(?<=-)\d{1,2}', str(scoresarr)) #matches strings that have a pattern of: [- digits]
-                for score in OPPscores:
-                    score_arr.append(score)
-            return score_arr
+                return OPPscores  #will return all does matches
+
+        #the statistics are returned
         elif mode == 'stat':
             # Statistic total of all players during that match
             if team == 'opponent': 
-                table_loc = 1
+                table_loc = 1 # Finds the table location of each team base of the data frame format
             elif team == 'ub':
                 table_loc = 4
             for i in range(0, len(data_frame[table_loc])):
-                if re.search('Totals',str(data_frame[table_loc].iloc[i])):
+                if re.search('Totals',str(data_frame[table_loc].iloc[i])): #Searches for a table that has the keyword: 'Totals"
                     loc = i
-            dict = {'SP': data_frame[table_loc].iloc[loc][2],
+            dict = {'SP': data_frame[table_loc].iloc[loc][2], #A dictionary that has the statics of the team
                     'K': data_frame[table_loc].iloc[loc][3],
                     'E': data_frame[table_loc].iloc[loc][4],
                     'TA': data_frame[table_loc].iloc[loc][5],
@@ -155,7 +147,8 @@ class Data():
             texts = texts + i.get_text() + "\n"
         return texts
 
-#Outputs
+#Output Testing
 UBVolleyball = Data(2018)
-print( UBVolleyball.match(match_number = 28, mode = 'name'), sep="\n")
-print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 28,mode = 'stat'), sep="\n")
+#print (Data(2018).match(28)) --> another way to do this
+#print( UBVolleyball.match(match_number = 28, mode = 'score'), sep="\n")
+#print( UBVolleyball.grabTeamScore(team = 'ub',match_number = 28,mode = 'score'), sep="\n")
