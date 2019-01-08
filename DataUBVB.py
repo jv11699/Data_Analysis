@@ -2,12 +2,16 @@ from bs4 import BeautifulSoup
 import re
 import urllib.request
 import pandas as pd
+'''
+The purpose of this file is to be able to easily grab data from the website 
+ -http://ubbulls.com/sports/wvball/2017-18/files/teamstat.htm- year 2017 UB's volleyball team's statistics 
+ -http://ubbulls.com/sports/wvball/2018-19/files/teamstat.htm- year 2018 UB's volleyball team's statistics 
+'''
 class Data():
     '''
-     A class that grabs the data of the volleyball of the university at buffalo team  base on the year
+     A class that grabs the data from the website of the university at buffalo volleyball team  base on the year
      --This link will help in determining the probability very useful: https://prezi.com/tgxlmlfypzwx/math-in-volleyball/
      Probability idea: if errors are not occuring and ub is not on the lead then maybe their probability of scoring next is high
-     **** Use this as a library to grab data easily ***
         ...
         Attributes
         - - - - - -
@@ -23,7 +27,7 @@ class Data():
         if year != 2017 and year != 2018:
             raise Exception("The years are only from 2017 and 2018")
         self.year = year
-        
+
         #A main link is preserved base on the year
         if year == 2017:
             url = 'http://ubbulls.com/sports/wvball/2017-18/files/teamstat.htm'
@@ -65,7 +69,7 @@ class Data():
         match_name = [td for td in (self.soup.find_all('td', {'align':'left'}))] #list of all the match names of that year
         table_html = [table for table in soup_match.find_all('table', {'border':0})] #the table html
         data_frame = pd.read_html(str(table_html)) #this is a panda object that is in a data frame
-        #detailScore = re.findall(r'(?<=Points)', self.convBStoString(details))
+
 
         ############################################
         #Below are modes that depends on user input#
