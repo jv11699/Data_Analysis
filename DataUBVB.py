@@ -23,6 +23,8 @@ class Data():
         if year != 2017 and year != 2018:
             raise Exception("The years are only from 2017 and 2018")
         self.year = year
+        
+        #A main link is preserved base on the year
         if year == 2017:
             url = 'http://ubbulls.com/sports/wvball/2017-18/files/teamstat.htm'
         else:
@@ -44,6 +46,9 @@ class Data():
                 'detail' will return the details for every score
                 'data frame' will return a data frame from pandas library
                 'name' will return the title of that match
+
+        **Initializations are inside this function to have a better Big-O complexity**
+
         :param match_number:  the nth number of match, matches are in chronological order where 0 is the latest and the last number is the oldest match
         :param mode: where the mode score will return the scores, and the mode name will return the name of that match
         :return: data dependent on the mode
@@ -51,6 +56,8 @@ class Data():
         if match_number > len(self.stringLink):
             #if user input is irrational for the parameter: match_number
             raise Exception("The match number excedes the number of matches")
+
+        ######################Initializations###########################################################
         counter = 0 #the counter used to counter the number of titles that will be used in the 'name' mode
         source_scores = urllib.request.urlopen(self.stringLink[match_number]).read()  # the url request that is determined through the match number
         soup_match = BeautifulSoup(source_scores, 'lxml')  # Conversion to a beautiful soup object
@@ -60,13 +67,16 @@ class Data():
         data_frame = pd.read_html(str(table_html)) #this is a panda object that is in a data frame
         #detailScore = re.findall(r'(?<=Points)', self.convBStoString(details))
 
-        #Below are modes that depends on user input
+        ############################################
+        #Below are modes that depends on user input#
+        ############################################
 
         #should return the scores of that match
         if mode == 'score':
             scorePattern = re.findall(r'\d{1,2}-\d{1,2}', self.convBStoString(scores))  # using regular expressions-it finds pattern of [digits - digits]
             return scorePattern
-        #returns the details from the game
+
+        # returns the details from the game
         elif mode == 'detail':
             row_arr= []
             if self.year == 2018: #This is added due to different implementation in the html table in the link of 2017 and 2018
@@ -77,9 +87,11 @@ class Data():
                 for index, row in data_frame[i].iterrows(): #It adds the details into an array
                     row_arr.append(row[1])
             return row_arr
+
         #should return a data frame object/Panda Object
         elif mode == 'data frame':
             return data_frame
+
         #should return the name of that match
         elif mode == 'name':
             for i in range(6, len(match_name), 3):  # start: is where the titles start from the html. Iterator: every 3rd because that is where the title is located
@@ -100,6 +112,10 @@ class Data():
         '''
         scoresarr = self.match(match_number)
         data_frame =  self.match(match_number, 'data frame')
+
+        #############################################
+        # Below are modes that depends on user input#
+        #############################################
 
         #the scores are returned
         if mode == 'score':
@@ -126,8 +142,8 @@ class Data():
                     'TA': data_frame[table_loc].iloc[loc][5],
                     'PCT': data_frame[table_loc].iloc[loc][6],
                     'A': data_frame[table_loc].iloc[loc][7],
-                    'SA': data_frame[table_loc].iloc[loc][8],
-                    'SE': data_frame[table_loc].iloc[loc][9],
+                    'SA': data_frame[table_loc].iloc[loc][8],   #The dictionary that contains the
+                    'SE': data_frame[table_loc].iloc[loc][9],   #stats for the (SP|K|E|TA|PCT|A|SA|SE|RE|DIGS|BS|BA|BE|BHE)
                     'RE': data_frame[table_loc].iloc[loc][10],
                     'DIGS': data_frame[table_loc].iloc[loc][11],
                     'BS': data_frame[table_loc].iloc[loc][12],
@@ -148,7 +164,7 @@ class Data():
         return texts
 
 #Output Testing
-UBVolleyball = Data(2018)
+UBVolleyball = Data(2017)
 #print (Data(2018).match(28)) --> another way to do this
-#print( UBVolleyball.match(match_number = 28, mode = 'score'), sep="\n")
-#print( UBVolleyball.grabTeamScore(team = 'ub',match_number = 28,mode = 'score'), sep="\n")
+#print( UBVolleyball.match(match_number = 15, mode = 'name'), sep="\n")
+print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 15,mode = 'stat'), sep="\n")
