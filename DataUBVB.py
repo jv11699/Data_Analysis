@@ -95,31 +95,11 @@ class Data():
                 if counter == match_number: #It would loop through every title till the counter matches the parameter match_number
                   return match_name[i].get_text()
                 counter = counter + 1
-
-        # Statistic total of all players during that match
-        elif mode ==  'stat': #Should return the dictionary of statics
-            #Stat_total
-            dict = {'SP': data_frame[1].iloc[13][2],
-                    'K': data_frame[1].iloc[13][3],
-                    'E':data_frame[1].iloc[13][4],
-                    'TA': data_frame[1].iloc[13][5],
-                    'PCT': data_frame[1].iloc[13][6],
-                    'A': data_frame[1].iloc[13][7],
-                    'SA': data_frame[1].iloc[13][8],
-                    'SE':data_frame[1].iloc[13][9],
-                    'RE':data_frame[1].iloc[13][10],
-                    'DIGS':data_frame[1].iloc[13][11],
-                    'BS':data_frame[1].iloc[13][12],
-                    'BA': data_frame[1].iloc[13][13],
-                    'BE': data_frame[1].iloc[13][14],
-                    'BHE':data_frame[1].iloc[13][15]}
-            print (dict['BE'])
-
         else:
             #if user input is irrational
             raise Exception(r"modes are only 'score' \ 'name' \ 'data frame' \ 'detail' \ 'stat' ")
 
-    def grabTeamScore(self,Team, match_number):
+    def grabTeamScore(self,team, match_number, mode):
         '''
         Grabs the score of UB or the opponent's volleyball team during that match
         :param Team: A String parameter that determines if the user wants UB's score or the opponent's score
@@ -128,16 +108,41 @@ class Data():
         '''
         scoresarr = self.match(match_number)
         score_arr = []
-        if Team == 'ub':  # if the parameter is B then is will return Buffalo scores
-            UBscores = re.findall(r'\d{1,2}(?=-)', str(scoresarr)) #matches strings that have a pattern of: [digits -]
-            for score in UBscores:
-                score_arr.append(score)
-        elif Team == 'opponent':  # if the parameter is M then it will return Michigan scores
-            OPPscores = re.findall(r'(?<=-)\d{1,2}', str(scoresarr)) #matches strings that have a pattern of: [- digits]
-            for score in OPPscores:
-                score_arr.append(score)
-        return score_arr
-
+        data_frame =  self.match(match_number, 'data frame')
+        if mode == 'score':
+            if team == 'ub':  # if the parameter is B then is will return Buffalo scores
+                UBscores = re.findall(r'\d{1,2}(?=-)', str(scoresarr)) #matches strings that have a pattern of: [digits -]
+                for score in UBscores:
+                    score_arr.append(score)
+            elif team == 'opponent':  # if the parameter is M then it will return Michigan scores
+                OPPscores = re.findall(r'(?<=-)\d{1,2}', str(scoresarr)) #matches strings that have a pattern of: [- digits]
+                for score in OPPscores:
+                    score_arr.append(score)
+            return score_arr
+        elif mode == 'stat':
+            # Statistic total of all players during that match
+            if team == 'opponent': 
+                table_loc = 1
+            elif team == 'ub':
+                table_loc = 4
+            for i in range(0, len(data_frame[table_loc])):
+                if re.search('Totals',str(data_frame[table_loc].iloc[i])):
+                    loc = i
+            dict = {'SP': data_frame[table_loc].iloc[loc][2],
+                    'K': data_frame[table_loc].iloc[loc][3],
+                    'E': data_frame[table_loc].iloc[loc][4],
+                    'TA': data_frame[table_loc].iloc[loc][5],
+                    'PCT': data_frame[table_loc].iloc[loc][6],
+                    'A': data_frame[table_loc].iloc[loc][7],
+                    'SA': data_frame[table_loc].iloc[loc][8],
+                    'SE': data_frame[table_loc].iloc[loc][9],
+                    'RE': data_frame[table_loc].iloc[loc][10],
+                    'DIGS': data_frame[table_loc].iloc[loc][11],
+                    'BS': data_frame[table_loc].iloc[loc][12],
+                    'BA': data_frame[table_loc].iloc[loc][13],
+                    'BE': data_frame[table_loc].iloc[loc][14],
+                    'BHE': data_frame[table_loc].iloc[loc][15]}
+            return dict
 
     def convBStoString(self,bs_objectArr):
         '''
@@ -149,5 +154,8 @@ class Data():
         for i in bs_objectArr:
             texts = texts + i.get_text() + "\n"
         return texts
+
+#Outputs
 UBVolleyball = Data(2018)
-print( UBVolleyball.match(match_number = 20, mode = 'stat'), sep="\n")
+print( UBVolleyball.match(match_number = 28, mode = 'name'), sep="\n")
+print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 28,mode = 'stat'), sep="\n")
