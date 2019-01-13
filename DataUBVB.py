@@ -118,13 +118,17 @@ class Data():
         '''
         scoresarr = self.match(match_number)
         data_frame =  self.match(match_number, 'data frame')
-
+        details = self.match(match_number, 'detail')
         #############################################
         # Below are modes that depends on user input#
         #############################################
 
-        #the scores are returned !!BUGS OCCUR in progress of fixing 
+        #the scores are returned !!BUGS OCCUR in progress of fixing STAT and SCORE
         if mode == 'score':
+            #return details[0]
+            UBscores = re.findall(r'\d{1,2}(?=-)', str(scoresarr))
+            
+            '''
             pattern =  r'\d{1,2}(?=-)' or r'(?<=-)\d{1,2}'
             if team == 'ub':  # if the parameter is B then is will return Buffalo scores
                 UBscores = re.findall(r'\d{1,2}(?=-)', str(scoresarr)) #matches strings that have a pattern of: [digits -]
@@ -132,14 +136,22 @@ class Data():
             elif team == 'opponent':  # if the parameter is M then it will return Michigan scores
                 OPPscores = re.findall(r'(?<=-)\d{1,2}', str(scoresarr)) #matches strings that have a pattern of: [- digits]
                 return OPPscores  #will return all does matches
-
+            '''
         #the statistics are returned
         elif mode == 'stat':
             # Statistic total of all players during that match
-            if team == 'opponent': 
-                table_loc = 1 # Finds the table location of each team base of the data frame format
+            ########################################################################
+            if re.search(r'Buffalo', data_frame[1].iloc[0][1]):
+                buff = 1
+                opp = 4
+            else:#This is added because in every match buffalo could be in table location 4 or 1
+                buff = 4
+                opp = 1
+            if team == 'opponent':
+                table_loc = opp
             elif team == 'ub':
-                table_loc = 4
+                table_loc = buff
+            #########################################################################
             for i in range(0, len(data_frame[table_loc])):
                 if re.search('Totals',str(data_frame[table_loc].iloc[i])): #Searches for a table that has the keyword: 'Totals"
                     loc = i
@@ -171,9 +183,8 @@ class Data():
         return texts
 
 #Output Testing
-'''
-UBVolleyball = Data(2017)
+
+UBVolleyball = Data(2018)
 #print (Data(2018).match(28)) --> another way to do this
-print(* UBVolleyball.match(match_number = 0, mode = 'detail'), sep="\n")
-#print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 15,mode = 'stat'), sep="\n")
-'''
+#print(* UBVolleyball.match(match_number = 0, mode = 'detail'), sep="\n")
+print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 20,mode = 'score'), sep="\n")
