@@ -1,12 +1,13 @@
+'''
+The purpose of this file is to be able to easily grab data from the website
+ -http://ubbulls.com/sports/wvball/2017-18/files/teamstat.htm- year 2017 UB's volleyball team's statistics
+ -http://ubbulls.com/sports/wvball/2018-19/files/teamstat.htm- year 2018 UB's volleyball team's statistics
+'''
 from bs4 import BeautifulSoup
 import re
 import urllib.request
 import pandas as pd
-'''
-The purpose of this file is to be able to easily grab data from the website 
- -http://ubbulls.com/sports/wvball/2017-18/files/teamstat.htm- year 2017 UB's volleyball team's statistics 
- -http://ubbulls.com/sports/wvball/2018-19/files/teamstat.htm- year 2018 UB's volleyball team's statistics 
-'''
+
 class Data():
     '''
      A class that grabs the data from the website of the university at buffalo volleyball team  base on the year
@@ -89,7 +90,8 @@ class Data():
                 start = 8
             for i in range(start,len(data_frame)): #The range from this for loop is where most of the details are located at from the table
                 for index, row in data_frame[i].iterrows(): #It adds the details into an array
-                    row_arr.append(row[1])
+                    if (re.search(r'Point',row[1])):
+                        row_arr.append(row[1])
             return row_arr
 
         #should return a data frame object/Panda Object
@@ -121,8 +123,9 @@ class Data():
         # Below are modes that depends on user input#
         #############################################
 
-        #the scores are returned
+        #the scores are returned !!BUGS OCCUR in progress of fixing 
         if mode == 'score':
+            pattern =  r'\d{1,2}(?=-)' or r'(?<=-)\d{1,2}'
             if team == 'ub':  # if the parameter is B then is will return Buffalo scores
                 UBscores = re.findall(r'\d{1,2}(?=-)', str(scoresarr)) #matches strings that have a pattern of: [digits -]
                 return UBscores #will return all does matches
@@ -168,7 +171,9 @@ class Data():
         return texts
 
 #Output Testing
+'''
 UBVolleyball = Data(2017)
 #print (Data(2018).match(28)) --> another way to do this
-#print( UBVolleyball.match(match_number = 15, mode = 'name'), sep="\n")
-print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 15,mode = 'stat'), sep="\n")
+print(* UBVolleyball.match(match_number = 0, mode = 'detail'), sep="\n")
+#print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 15,mode = 'stat'), sep="\n")
+'''
