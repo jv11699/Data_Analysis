@@ -66,8 +66,6 @@ class Data():
         counter = 0 #the counter used to counter the number of titles that will be used in the 'name' mode
         source_scores = urllib.request.urlopen(self.stringLink[match_number]).read()  # the url request that is determined through the match number
         soup_match = BeautifulSoup(source_scores, 'lxml')  # Conversion to a beautiful soup object
-        scores = [b for b in (td.find('b') for td in soup_match.findAll('td')) if b]  # Grabs all the B tags which contains the scores
-        match_name = [td for td in (self.soup.find_all('td', {'align':'left'}))] #list of all the match names of that year
         table_html = [table for table in soup_match.find_all('table', {'border':0})] #the table html
         data_frame = pd.read_html(str(table_html)) #this is a panda object that is in a data frame
 
@@ -78,6 +76,7 @@ class Data():
 
         #should return the scores of that match
         if mode == 'score':
+            scores = [b for b in (td.find('b') for td in soup_match.findAll('td')) if b]  # Grabs all the B tags which contains the scores
             scorePattern = re.findall(r'\d{1,2}-\d{1,2}', self.convBStoString(scores))  # using regular expressions-it finds pattern of [digits - digits]
             return scorePattern
 
@@ -100,6 +99,7 @@ class Data():
 
         #should return the name of that match
         elif mode == 'name':
+            match_name = [td for td in(self.soup.find_all('td', {'align': 'left'}))]  # list of all the match names of that year
             for i in range(6, len(match_name), 3):  # start: is where the titles start from the html. Iterator: every 3rd because that is where the title is located
                 if counter == match_number: #It would loop through every title till the counter matches the parameter match_number
                   return match_name[i].get_text()
@@ -117,36 +117,39 @@ class Data():
         :return: returns an array of scores
         '''
         scoresarr = self.match(match_number)
-        data_frame =  self.match(match_number, 'data frame')
-        details = self.match(match_number, 'detail')
+
         #############################################
         # Below are modes that depends on user input#
         #############################################
 
         #the scores are returned !!BUGS OCCUR in progress of fixing STAT and SCORE
         if mode == 'score':
-            #return details[0]
-            UBscores = re.findall(r'\d{1,2}(?=-)', str(scoresarr))
-            
-            '''
-            pattern =  r'\d{1,2}(?=-)' or r'(?<=-)\d{1,2}'
+            details = self.match(match_number, 'detail')
+            if re.search(r'Point UB', details[0]) and re.search(r'1-0', scoresarr[0]) \
+               or re.search(r'Point UB', details[0]) is False and re.search(r'0-1', scoresarr[0]):
+                    ub_pattern,opp_pattern  = r'\d{1,2}(?=-)', r'(?<=-)\d{1,2}'
+
+            else:                                  #This is added due to the different implementations between websites
+                    ub_pattern,opp_pattern = r'(?<=-)\d{1,2}',r'\d{1,2}(?=-)'
+
+            ########USER INPUT##########################################################################################
             if team == 'ub':  # if the parameter is B then is will return Buffalo scores
-                UBscores = re.findall(r'\d{1,2}(?=-)', str(scoresarr)) #matches strings that have a pattern of: [digits -]
+                UBscores = re.findall(ub_pattern, str(scoresarr)) #matches strings that have a pattern of: [digits -]
                 return UBscores #will return all does matches
             elif team == 'opponent':  # if the parameter is M then it will return Michigan scores
-                OPPscores = re.findall(r'(?<=-)\d{1,2}', str(scoresarr)) #matches strings that have a pattern of: [- digits]
+                OPPscores = re.findall(opp_pattern, str(scoresarr)) #matches strings that have a pattern of: [- digits]
                 return OPPscores  #will return all does matches
-            '''
+
         #the statistics are returned
         elif mode == 'stat':
+            data_frame = self.match(match_number, 'data frame')
             # Statistic total of all players during that match
             ########################################################################
             if re.search(r'Buffalo', data_frame[1].iloc[0][1]):
-                buff = 1
-                opp = 4
+                buff,opp = 1,4
             else:#This is added because in every match buffalo could be in table location 4 or 1
-                buff = 4
-                opp = 1
+                buff,opp = 4,1
+
             if team == 'opponent':
                 table_loc = opp
             elif team == 'ub':
@@ -187,4 +190,4 @@ class Data():
 UBVolleyball = Data(2018)
 #print (Data(2018).match(28)) --> another way to do this
 #print(* UBVolleyball.match(match_number = 0, mode = 'detail'), sep="\n")
-print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 20,mode = 'score'), sep="\n")
+print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 7,mode = 'score'), sep="\n")
