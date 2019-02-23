@@ -106,7 +106,7 @@ class Data():
         elif mode == 'name':
             match_name = [td for td in(self.soup.find_all('td', {'align': 'left'}))]  # list of all the match names of that year
             for i in range(6, len(match_name), 3):  # start: is where the titles start from the html. Iterator: every 3rd because that is where the title is located
-                if counter == match_number: #It would loop through every title till the counter matches the parameter match_number
+                if counter == match_number and mode == 'name': #It would loop through every title till the counter matches the parameter match_number
                   return match_name[i].get_text()
                 counter = counter + 1
         elif mode == 'opp name':
@@ -195,10 +195,15 @@ class Data():
             texts = texts + i.get_text() + "\n"
         return texts
 
-
+    def numOfMatches(self):
+        '''
+        :return: returns the number of matches during that year
+        '''
+        return len(self.stringLink)
 #Output Testing
 #
-UBVolleyball = Data(2017)
-#print (Data(2018).match(28)) --> another way to do this  combination [3][0][1] || other team combination [3][0][3]
-print(UBVolleyball.match(match_number = 4, mode = 'opp name'), sep="\n")
+UBVolleyball = Data(2018)
+#print (Data(2018).match(28)) --> another way to do this
+#print(UBVolleyball.match(match_number = 4, mode = 'num matches'), sep="\n")
+print(UBVolleyball.numOfMatches())
 #print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 7,mode = 'score'), sep="\n")
