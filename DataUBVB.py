@@ -45,6 +45,8 @@ class Data():
                 self.stringLink.append('http://ubbulls.com/sports/wvball/2018-19/files/' + link['href'])  # Each link in the 2018 website is appended inside the StringLink array
 
     def match(self,match_number, mode='score'):
+
+        #ubscore column opponent score who served that point who the opponent was match number.
         '''
         Scrapes the needed data from the website,
         Modes : 'score' will return both the score of UB and the opponent
@@ -80,19 +82,22 @@ class Data():
             scorePattern = re.findall(r'\d{1,2}-\d{1,2}', self.convBStoString(scores))  # using regular expressions-it finds pattern of [digits - digits]
             return scorePattern
 
-        # returns the details from the game
-        elif mode == 'detail':
+        # returns the details from the game or which team is serving.
+        elif mode == 'detail' or  mode == 'SO':
             row_arr= []
-            if self.year == 2018: #This is added due to different implementation in the html table in the link of 2017 and 2018
-                start = 7
+            if (mode == 'detail'):
+                locationInDataframe = 1
             else:
-                start = 8
-            for i in range(start,len(data_frame)): #The range from this for loop is where most of the details are located at from the table
+                locationInDataframe = 2
+            if self.year == 2018: #This is added due to different implementation in the html table in the link of 2017 and 2018
+                startpos = 7         #On the location in the of the data frame. These numbers are the starting positions of where the information is located
+            else:
+                startpos = 8
+            for i in range(startpos,len(data_frame)): #The range from this for loop is where most of the details are located at from the table
                 for index, row in data_frame[i].iterrows(): #It adds the details into an array
-                    if (re.search(r'Point',row[1])):
-                        row_arr.append(row[1])
+                    if (re.search(r'Point',row[1])): #finds row details that have the keyword: Point and appends them to an array
+                        row_arr.append(row[locationInDataframe])
             return row_arr
-
         #should return a data frame object/Panda Object
         elif mode == 'data frame':
             return data_frame
@@ -104,9 +109,14 @@ class Data():
                 if counter == match_number: #It would loop through every title till the counter matches the parameter match_number
                   return match_name[i].get_text()
                 counter = counter + 1
+        elif mode == 'opp name':
+            if(re.search(r"Buffalo",data_frame[3][0][1])):
+                return data_frame[3][0][3] #these numbers are locations in the data frame that have the names of the teams
+            else:                          #They interchange depending on the game, but overall its only these locations that have the teams names
+                return data_frame[3][0][1]
         else:
-            #if user input is irrational
-            raise Exception(r"modes are only 'score' \ 'name' \ 'data frame' \ 'detail' \ 'stat' ")
+            #if user input is irrational it raises an exception
+            raise Exception(r"modes are only 'score' \ 'name' \ 'data frame' \ 'detail' \ 'SO' \ 'stat' \ 'opp name' ")
 
     def grabTeamScore(self,team, match_number, mode = 'score'):
         '''
@@ -122,35 +132,34 @@ class Data():
         # Below are modes that depends on user input#
         #############################################
 
-        #the scores are returned !!BUGS OCCUR in progress of fixing STAT and SCORE
+        #the scores are returned !!
         if mode == 'score':
-            details = self.match(match_number, 'detail')
-            if re.search(r'Point UB', details[0]) and re.search(r'1-0', scoresarr[0]) \
-               or re.search(r'Point UB', details[0]) is False and re.search(r'0-1', scoresarr[0]):
+            detail = self.match(match_number, 'detail')[0]
+            #Determines which side of the column is UB's scores or the opponents
+            if re.search(r'Point UB', detail) and re.search(r'1-0', scoresarr[0]) \
+               or re.search(r'Point UB', detail) is False and re.search(r'0-1', scoresarr[0]):
                     ub_pattern,opp_pattern  = r'\d{1,2}(?=-)', r'(?<=-)\d{1,2}'
 
             else:                                  #This is added due to the different implementations between websites
                     ub_pattern,opp_pattern = r'(?<=-)\d{1,2}',r'\d{1,2}(?=-)'
 
             ########USER INPUT##########################################################################################
-            if team == 'ub':  # if the parameter is B then is will return Buffalo scores
+            if team == 'ub':  # if the parameter is 'ub' then is will return Buffalo scores
                 UBscores = re.findall(ub_pattern, str(scoresarr)) #matches strings that have a pattern of: [digits -]
                 return UBscores #will return all does matches
-            elif team == 'opponent':  # if the parameter is M then it will return Michigan scores
+            elif team == 'opponent':  # if the parameter is 'opponent' then it will return opponent scores
                 OPPscores = re.findall(opp_pattern, str(scoresarr)) #matches strings that have a pattern of: [- digits]
                 return OPPscores  #will return all does matches
 
-        #the statistics are returned
+        #the statistics of each player are returned
         elif mode == 'stat':
             data_frame = self.match(match_number, 'data frame')
-            # Statistic total of all players during that match
-            ########################################################################
             if re.search(r'Buffalo', data_frame[1].iloc[0][1]):
                 buff,opp = 1,4
-            else:#This is added because in every match buffalo could be in table location 4 or 1
+            else:#This is added because in every match buffalo could be in table location 4 or 1 within the data frame
                 buff,opp = 4,1
 
-            if team == 'opponent':
+            if team == 'opponent': #Depending on user input, table_loc would reference which team the user needs.
                 table_loc = opp
             elif team == 'ub':
                 table_loc = buff
@@ -174,6 +183,7 @@ class Data():
                     'BHE': data_frame[table_loc].iloc[loc][15]}
             return dict
 
+
     def convBStoString(self,bs_objectArr):
         '''
         Converts Array of Beautiful soup objects into a String
@@ -185,9 +195,10 @@ class Data():
             texts = texts + i.get_text() + "\n"
         return texts
 
+
 #Output Testing
 
-UBVolleyball = Data(2018)
-#print (Data(2018).match(28)) --> another way to do this
-#print(* UBVolleyball.match(match_number = 0, mode = 'detail'), sep="\n")
-print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 7,mode = 'score'), sep="\n")
+UBVolleyball = Data(2017)
+#print (Data(2018).match(28)) --> another way to do this  combination [3][0][1] || other team combination [3][0][3]
+print(UBVolleyball.match(match_number = 4, mode = 'opp name'), sep="\n")
+#print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 7,mode = 'score'), sep="\n")

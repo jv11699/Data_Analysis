@@ -1,12 +1,16 @@
 '''
+Website basis: http://www.righto.com/2011/07/mathematics-of-volleyball.html
 This is a beta version of probability testing
 *The goal of this file is to be able to see patterns
 Events:
     Error
     Kill
-
 Sample Space:
     {UB gaining a score, UB losing a score}
+
+
+NOTE: SINCE OF THE RALLY POINT SYSTEM PROBABILITY OF SCORING WHEN A TEAM HAS THE BALL IN HAND IS HIGH
+Formula? p(m,n) = p(m+1,n)+ p(m,n+1) / 2
 '''
 from DataUBVB import Data
 import re
