@@ -98,6 +98,8 @@ class Data():
                     if (re.search(r'Point',row[1])): #finds row details that have the keyword: Point and appends them to an array
                         row_arr.append(row[locationInDataframe])
             return row_arr
+
+
         #should return a data frame object/Panda Object
         elif mode == 'data frame':
             return data_frame
@@ -202,8 +204,8 @@ class Data():
         return len(self.stringLink)
 #Output Testing
 #
-UBVolleyball = Data(2018)
+#UBVolleyball = Data(2018)
 #print (Data(2018).match(28)) --> another way to do this
-#print(UBVolleyball.match(match_number = 4, mode = 'num matches'), sep="\n")
-print(UBVolleyball.numOfMatches())
+#print(UBVolleyball.match(match_number = 4, mode = 'SO')[0], sep="\n")
+#print(UBVolleyball.numOfMatches())
 #print( UBVolleyball.grabTeamScore(team = 'opponent',match_number = 7,mode = 'score'), sep="\n")

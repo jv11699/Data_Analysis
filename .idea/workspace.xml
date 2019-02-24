@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24ddfc8b-04f3-430c-9d10-0e25ed32bf22" name="Default Changelist" comment="" />
+    <list default="true" id="24ddfc8b-04f3-430c-9d10-0e25ed32bf22" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2017Data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSVfile.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSVfile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataUBVB.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataUBVB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph.js" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,8 +16,9 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Data_Analysis$MichiganvsBuffalo.coverage" NAME="MichiganvsBuffalo Coverage Results" MODIFIED="1546058513272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Data_Analysis$CSVfile.coverage" NAME="CSVfile Coverage Results" MODIFIED="1550985851796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Data_Analysis$Graph.coverage" NAME="Graph Coverage Results" MODIFIED="1547362703185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Data_Analysis$DataUBVB.coverage" NAME="DataUBVB Coverage Results" MODIFIED="1550960400284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/repo" />
+    <SUITE FILE_PATH="coverage/Data_Analysis$DataUBVB.coverage" NAME="DataUBVB Coverage Results" MODIFIED="1550988502327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/repo" />
     <SUITE FILE_PATH="coverage/Data_Analysis$2017Data.coverage" NAME="2017Data Coverage Results" MODIFIED="1546482624952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Data_Analysis$Jsoncsv.coverage" NAME="Jsoncsv Coverage Results" MODIFIED="1550905771209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -41,6 +48,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Jsoncsv" value="1" />
+          <entry key="gitignore" value="1" />
           <entry key="js" value="2" />
           <entry key="py" value="16" />
         </counts>
@@ -48,6 +56,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JavaScript" value="2" />
+          <entry key="PLAIN_TEXT" value="1" />
           <entry key="Python" value="17" />
         </counts>
       </usages-collector>
@@ -56,15 +65,16 @@
           <entry key="Jsoncsv" value="300" />
           <entry key="Python Console" value="74" />
           <entry key="js" value="120" />
-          <entry key="py" value="23310" />
-          <entry key="txt" value="1133" />
+          <entry key="py" value="24930" />
+          <entry key="txt" value="1258" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JavaScript" value="120" />
-          <entry key="PLAIN_TEXT" value="1133" />
-          <entry key="Python" value="23684" />
+          <entry key="PLAIN_TEXT" value="1258" />
+          <entry key="Python" value="25303" />
+          <entry key="SQL" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -74,23 +84,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2017Data.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-                <marker date="1546293709301" expanded="true" signature="1070:2838" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CSVfile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="-202">
+              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,25 +98,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DataUBVB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="195" column="20" lean-forward="true" selection-start-line="195" selection-start-column="20" selection-end-line="195" selection-end-column="20" />
+            <state relative-caret-position="155">
+              <caret line="206" column="1" selection-start-line="206" selection-start-column="1" selection-end-line="206" selection-end-column="1" />
               <folding>
                 <element signature="e#298#327#0" expanded="true" />
-                <marker date="1550960840617" expanded="true" signature="11247:11252" ph="..." />
+                <marker date="1550988563404" expanded="true" signature="11268:11273" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Graph.js">
+        <entry file="file://$PROJECT_DIR$/repo/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
+            <state relative-caret-position="-1505" />
           </provider>
         </entry>
       </file>
@@ -257,6 +252,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="CSVfile" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Data_Analysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CSVfile.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="DataUBVB" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Data_Analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -323,42 +340,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="MichiganvsBuffalo" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Data_Analysis" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MichiganvsBuffalo.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Python.MichiganvsBuffalo" />
       <item itemvalue="Python.2017Data" />
       <item itemvalue="Python.DataUBVB" />
       <item itemvalue="Python.Graph" />
       <item itemvalue="Python.Jsoncsv" />
+      <item itemvalue="Python.CSVfile" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.DataUBVB" />
+        <item itemvalue="Python.CSVfile" />
         <item itemvalue="Python.Jsoncsv" />
         <item itemvalue="Python.Graph" />
         <item itemvalue="Python.2017Data" />
-        <item itemvalue="Python.MichiganvsBuffalo" />
       </list>
     </recent_temporary>
   </component>
@@ -576,18 +571,26 @@
       <option name="project" value="LOCAL" />
       <updated>1550960885882</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="*added new modes ==&gt; SO&#10;*added new function ==&gt; numMatches() returns number of matches during that year.">
+      <created>1550966159051</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1550966159051</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17170954" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49319214" weight="0.35679215" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49319214" visible="true" weight="0.35679215" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -596,7 +599,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50680786" side_tool="true" weight="0.14566284" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49924356" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49924356" weight="0.3289689" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -653,18 +656,8 @@
     <MESSAGE value="Fixed stat bug" />
     <MESSAGE value="All bugs mentioned before have been fixed" />
     <MESSAGE value="*mode added: SO that outputs the list of service over&#10;*Comments are added for better understanding&#10;*CSVfile.py added that transfers the data to a CSV file" />
-    <option name="LAST_COMMIT_MESSAGE" value="*mode added: SO that outputs the list of service over&#10;*Comments are added for better understanding&#10;*CSVfile.py added that transfers the data to a CSV file" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/2017Data.py</url>
-          <line>64</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="*added new modes ==&gt; SO&#10;*added new function ==&gt; numMatches() returns number of matches during that year." />
+    <option name="LAST_COMMIT_MESSAGE" value="*added new modes ==&gt; SO&#10;*added new function ==&gt; numMatches() returns number of matches during that year." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Local Settings/Programs/Python/Python37-32/Lib/site-packages/pip/_internal/vcs/git.py">
@@ -695,6 +688,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Graph.py" />
     <entry file="file://$PROJECT_DIR$/MichiganvsBuffalo.py" />
+    <entry file="file://$PROJECT_DIR$/Jsoncsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Graph.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -705,10 +705,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Jsoncsv">
+    <entry file="file://$PROJECT_DIR$/2017Data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="561">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -722,31 +725,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CSVfile.py">
+    <entry file="file://$PROJECT_DIR$/repo/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
+        <state relative-caret-position="-1505" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2017Data.py">
+    <entry file="file://$PROJECT_DIR$/CSVfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="-202">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
-            <marker date="1546293709301" expanded="true" signature="1070:2838" ph="..." />
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DataUBVB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="195" column="20" lean-forward="true" selection-start-line="195" selection-start-column="20" selection-end-line="195" selection-end-column="20" />
+        <state relative-caret-position="155">
+          <caret line="206" column="1" selection-start-line="206" selection-start-column="1" selection-end-line="206" selection-end-column="1" />
           <folding>
             <element signature="e#298#327#0" expanded="true" />
-            <marker date="1550960840617" expanded="true" signature="11247:11252" ph="..." />
+            <marker date="1550988563404" expanded="true" signature="11268:11273" ph="..." />
           </folding>
         </state>
       </provider>
