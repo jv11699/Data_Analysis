@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24ddfc8b-04f3-430c-9d10-0e25ed32bf22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/DataofUB" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CSVfile.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSVfile.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataUBVB.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataUBVB.py" afterDir="false" />
@@ -14,9 +15,9 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Data_Analysis$MichiganvsBuffalo.coverage" NAME="MichiganvsBuffalo Coverage Results" MODIFIED="1546058513272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Data_Analysis$CSVfile.coverage" NAME="CSVfile Coverage Results" MODIFIED="1551050880848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Data_Analysis$CSVfile.coverage" NAME="CSVfile Coverage Results" MODIFIED="1551093084594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Data_Analysis$Graph.coverage" NAME="Graph Coverage Results" MODIFIED="1547362703185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Data_Analysis$DataUBVB.coverage" NAME="DataUBVB Coverage Results" MODIFIED="1551080423326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/repo" />
+    <SUITE FILE_PATH="coverage/Data_Analysis$DataUBVB.coverage" NAME="DataUBVB Coverage Results" MODIFIED="1551093072669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/repo" />
     <SUITE FILE_PATH="coverage/Data_Analysis$2017Data.coverage" NAME="2017Data Coverage Results" MODIFIED="1546482624952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Data_Analysis$Jsoncsv.coverage" NAME="Jsoncsv Coverage Results" MODIFIED="1550905771209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -46,19 +47,19 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="DataSciProj" value="1" />
-          <entry key="DataofUB" value="4" />
+          <entry key="DataofUB" value="12" />
           <entry key="DataofUBVB" value="1" />
           <entry key="Jsoncsv" value="1" />
           <entry key="gitignore" value="1" />
           <entry key="js" value="2" />
-          <entry key="py" value="18" />
+          <entry key="py" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JavaScript" value="2" />
-          <entry key="PLAIN_TEXT" value="5" />
-          <entry key="Python" value="19" />
+          <entry key="PLAIN_TEXT" value="13" />
+          <entry key="Python" value="21" />
           <entry key="UNKNOWN" value="2" />
         </counts>
       </usages-collector>
@@ -69,15 +70,15 @@
           <entry key="Jsoncsv" value="300" />
           <entry key="Python Console" value="74" />
           <entry key="js" value="120" />
-          <entry key="py" value="25826" />
-          <entry key="txt" value="1286" />
+          <entry key="py" value="26689" />
+          <entry key="txt" value="1521" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JavaScript" value="120" />
-          <entry key="PLAIN_TEXT" value="1293" />
-          <entry key="Python" value="26199" />
+          <entry key="PLAIN_TEXT" value="1528" />
+          <entry key="Python" value="27062" />
           <entry key="SQL" value="1" />
         </counts>
       </usages-collector>
@@ -88,25 +89,32 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CSVfile.py">
+        <entry file="file://$PROJECT_DIR$/DataUBVB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="24" column="93" selection-start-line="24" selection-start-column="93" selection-end-line="24" selection-end-column="93" />
+            <state relative-caret-position="240">
+              <caret line="208" column="1" selection-start-line="208" selection-start-column="1" selection-end-line="208" selection-end-column="1" />
               <folding>
-                <element signature="e#0#23#0" expanded="true" />
+                <element signature="e#298#327#0" expanded="true" />
+                <marker date="1551093084439" expanded="true" signature="2113:2115" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DataUBVB.py">
+        <entry file="file://$PROJECT_DIR$/DataofUB">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3383">
-              <caret line="199" column="1" selection-start-line="199" selection-start-column="1" selection-end-line="199" selection-end-column="1" />
+            <state relative-caret-position="-105716" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CSVfile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
               <folding>
-                <element signature="e#298#327#0" expanded="true" />
-                <marker date="1551080551753" expanded="true" signature="2113:2115" ph="..." />
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -116,27 +124,6 @@
         <entry file="file://$PROJECT_DIR$/repo/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1505" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Prob_Trial.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-              <folding>
-                <element signature="e#413#438#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataofUB">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-49938">
-              <caret line="358" column="14" selection-start-line="358" selection-start-column="14" selection-end-line="358" selection-end-column="14" />
-            </state>
           </provider>
         </entry>
       </file>
@@ -191,8 +178,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="628" />
+    <option name="y" value="79" />
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
@@ -245,7 +232,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.DataUBVB">
+  <component name="RunManager" selected="Python.CSVfile">
     <configuration name="2017Data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Data_Analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -365,8 +352,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.DataUBVB" />
         <item itemvalue="Python.CSVfile" />
+        <item itemvalue="Python.DataUBVB" />
         <item itemvalue="Python.Jsoncsv" />
         <item itemvalue="Python.Graph" />
         <item itemvalue="Python.2017Data" />
@@ -601,7 +588,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550988636753</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="*Re-structured the whole code: removed object orient programming as it is much slower. &#10;*fixed major bugs; which opponent was serving, and the number of outputs.">
+      <created>1551080641499</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1551080641499</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -681,7 +675,8 @@
     <MESSAGE value="*mode added: SO that outputs the list of service over&#10;*Comments are added for better understanding&#10;*CSVfile.py added that transfers the data to a CSV file" />
     <MESSAGE value="*added new modes ==&gt; SO&#10;*added new function ==&gt; numMatches() returns number of matches during that year." />
     <MESSAGE value="*finished, with updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="*finished, with updates" />
+    <MESSAGE value="*Re-structured the whole code: removed object orient programming as it is much slower. &#10;*fixed major bugs; which opponent was serving, and the number of outputs." />
+    <option name="LAST_COMMIT_MESSAGE" value="*Re-structured the whole code: removed object orient programming as it is much slower. &#10;*fixed major bugs; which opponent was serving, and the number of outputs." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Local Settings/Programs/Python/Python37-32/Lib/site-packages/pip/_internal/vcs/git.py">
@@ -732,11 +727,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repo/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1505" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DataofUBVB">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3086">
@@ -768,32 +758,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataofUB">
+    <entry file="file://$PROJECT_DIR$/repo/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-49938">
-          <caret line="358" column="14" selection-start-line="358" selection-start-column="14" selection-end-line="358" selection-end-column="14" />
+        <state relative-caret-position="-1505" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataUBVB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="208" column="1" selection-start-line="208" selection-start-column="1" selection-end-line="208" selection-end-column="1" />
+          <folding>
+            <element signature="e#298#327#0" expanded="true" />
+            <marker date="1551093084439" expanded="true" signature="2113:2115" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CSVfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="24" column="93" selection-start-line="24" selection-start-column="93" selection-end-line="24" selection-end-column="93" />
+        <state relative-caret-position="189">
+          <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataUBVB.py">
+    <entry file="file://$PROJECT_DIR$/DataofUB">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3383">
-          <caret line="199" column="1" selection-start-line="199" selection-start-column="1" selection-end-line="199" selection-end-column="1" />
-          <folding>
-            <element signature="e#298#327#0" expanded="true" />
-            <marker date="1551080551753" expanded="true" signature="2113:2115" ph="..." />
-          </folding>
-        </state>
+        <state relative-caret-position="-105716" />
       </provider>
     </entry>
   </component>

@@ -197,11 +197,14 @@ def numOfMatches():
 #
 #UBVolleyball = Data(2017)
 #print (Data(2018).match(28)) --> another way to do this
-#print(match(match_number = 9, mode = 'score')[48])
+#print(match(match_number = 0, mode = 'SO')[66])
 #print(UBVolleyball.numOfMatches())
 #print(grabTeamScore(team = 'ub',match_number = 0,mode = 'score')[181])
 #print(len(UBVolleyball.match(match_number=0, mode='score')))
 #lengthOfScores = len(match(match_number=0, mode='score'))
-#print(lengthOfScores-1)
-#print(grabTeamScore(team = 'ub',match_number = 9,mode = 'score')[48])
-#print(re.search(r'0-1|1-0',match(match_number=9,mode='score')[48]))
+#print(re.search(r'0-1|1-0',str(match(match_number=0,mode='score')[66])))
+#print(re.search(r'0-1',"11-01"))
+#print(str(match(match_number=1,mode='score')[52]))
+#print(int(grabTeamScore('ub',1,'score')[52]) > 0)
+#print(re.search("(?:^|\W)0-1(?:$|\W)|(?:^|\W)1-0(?:$|\W)", "11-00"))
+#print(re.search(r'so',match(match_number=0,mode='SO')[66]))
