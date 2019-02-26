@@ -2,11 +2,11 @@ import DataUBVB as Data
 import csv
 import re
 
-UBname = "UB"
-with open('DataofUB','w') as csvFile:
+UBname = "UB" #Name to be used of who is serving
+with open('DataofUB2018','w') as csvFile:
     writer = csv.writer(csvFile)
-    writer.writerow(["UB's score","Opponents Score","Who served that point","Opponent name","Match Number"])
-    for i in range(0,Data.numOfMatches()):
+    writer.writerow(["UB's score","Opponents Score","Who served that point","Opponent name","Match Number"]) #The title of the csv file.
+    for i in range(0,Data.numOfMatches()): #The first for loops go through the matches
         lengthOfScores = len(Data.match(match_number=i, mode='score'))
         ubscore = Data.grabTeamScore(team='ub', match_number=i, mode='score')
         oppscore = Data.grabTeamScore(team = 'opponent', match_number = i, mode = 'score')
@@ -17,12 +17,13 @@ with open('DataofUB','w') as csvFile:
             serve = UBname
         else:
             serve = oppname
-        for x in range(0,lengthOfScores):
+        for x in range(0,lengthOfScores): #The second for loop goes through the scores
             writer.writerow([int(ubscore[x]),
                             int(oppscore[x]),
                             serve,
                             oppname,
                             i])
+            #Checks the next score if its service over or a new set to change the state of who is serving.
             if (x < lengthOfScores - 1 and re.search(r'so',str(SOdata[x + 1]))):
                 #This determines if a service is over, that means the other team is serving.
                 if (re.search("(?:^|\W)UB(?:$|\W)", serve)):
